@@ -7,3 +7,10 @@
 
 - name: Install MariaDB
   include_tasks: deploy_mariadb.yaml
+
+- name: Install WebMail Lite
+  include_tasks: install_webmail.yaml
+
+- debug:
+    msg:
+      - "open the browser 'http://{{ ansible_ssh_host }}/?install' "

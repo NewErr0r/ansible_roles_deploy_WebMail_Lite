@@ -1,3 +1,14 @@
 ---
 ### MariaDB ###
 mysql_root_pass: "P@ssw0rd"
+name_db: "webmail"
+user_db: "webmail"
+pass_user_db: "P@ssw0rd"
+
+### WebMail Lite ###
+download_url: "https://afterlogic.org/download/webmail_php.zip"
+download_path: /root
+
+### NGINX (/etc/nginx/conf.d/webmail_lite.conf) ###
+server_name: "{{ ansible_ssh_host }}"
+root_path: "{{ wmlite_directory }}"

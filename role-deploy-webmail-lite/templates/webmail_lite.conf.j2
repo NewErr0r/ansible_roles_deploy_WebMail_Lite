@@ -1,0 +1,19 @@
+server {
+    listen       80;
+    server_name  {{ server_name }};
+    set $root_path {{ root_path }};
+    root $root_path;
+
+    location / {
+        index index.php;
+    }
+
+    location ~ \.php$ {
+        fastcgi_pass unix:/run/php-fpm/www.sock;
+        fastcgi_index index.php;
+        fastcgi_param SCRIPT_FILENAME $root_path$fastcgi_script_name;
+        include fastcgi_params;
+        fastcgi_param DOCUMENT_ROOT $root_path;
+        fastcgi_read_timeout 300;
+    }
+}

@@ -15,3 +15,6 @@ packages_mariadb:
   - mariadb-server
   - python3-PyMySQL
   - php-mysqli
+
+wmlite_directory: /var/www/wmlite
+webmail_lite_conf: /etc/nginx/conf.d/webmail_lite.conf
