@@ -1,0 +1,17 @@
+---
+packages:
+  - wget
+  - unzip
+
+packages_php: 
+  - php 
+  - php-json 
+  - php-xml
+  - php-fpm
+
+nginx_conf: /etc/nginx/nginx.conf
+
+packages_mariadb: 
+  - mariadb-server
+  - python3-PyMySQL
+  - php-mysqli

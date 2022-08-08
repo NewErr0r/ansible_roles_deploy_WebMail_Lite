@@ -1,0 +1,31 @@
+- name: Install NGINX
+  dnf:
+    name: nginx 
+    state: latest 
+
+- name: Started and Enabled NGINX 
+  service: 
+    name: nginx 
+    enabled: true 
+    state: started 
+
+- name: Installing php and components
+  dnf: 
+    name: "{{ packages_php }}"
+    state: latest 
+
+- name: Started and Enabled PHP-FPM
+  service: 
+    name: php-fpm 
+    enabled: true 
+    state: started 
+
+- name: Configure "nginx.conf"
+  copy: 
+    src: nginx.conf 
+    dest: "{{ nginx_conf }}"
+
+- name: Restarted NGINX  
+  service: 
+    name: nginx 
+    state: restarted

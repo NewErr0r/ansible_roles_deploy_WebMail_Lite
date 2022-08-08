@@ -1,0 +1,19 @@
+- name: Install MariaDB 
+  dnf:
+    name: "{{ packages_mariadb }}"
+    state: latest 
+
+- name: Started and Enabled MariaDB
+  service: 
+    name: mariadb 
+    enabled: true 
+    state: started
+
+- name: Configurations root password for MariaDB
+  mysql_user:
+    check_implicit_admin: true
+    login_user: root 
+    login_password: "{{ mysql_root_pass }}"
+    user: root 
+    password: "{{ mysql_root_pass }}"
+    host: localhost

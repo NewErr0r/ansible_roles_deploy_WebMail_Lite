@@ -1,0 +1,27 @@
+- name: Configure Firewalld 
+  firewalld: 
+    port: "{{ item }}"
+    permanent: yes 
+    state: enabled 
+  loop:
+    - "80/tcp"
+    - "443/tcp"
+  notify: 
+    - Restart Firewalld
+
+- name: Install packages
+  dnf: 
+    name: "{{ packages }}"
+    state: latest
+
+- name: Disable SELinux now
+  shell:  | 
+    setenforce 0 
+  when: 
+    - ansible_selinux.status == "enabled"
+
+- name: Desable SELinux 
+  ansible.posix.selinux:
+    state: disabled
+  when: 
+    - ansible_selinux.status == "enabled"

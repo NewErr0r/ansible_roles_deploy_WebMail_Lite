@@ -1,0 +1,9 @@
+---
+- name: System preparation
+  include_tasks: preparation_system.yaml
+
+- name: Install Web-Server
+  include_tasks: deploy_websever.yaml
+
+- name: Install MariaDB
+  include_tasks: deploy_mariadb.yaml
